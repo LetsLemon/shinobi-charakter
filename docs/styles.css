@@ -5,3 +5,6 @@
 .creator .subpanel{margin:16px 0}.creator .error{margin-top:24px}.creator .check:has([data-disabled]){opacity:.55}.creator details>summary{padding:6px 0}.creator .field{min-width:0}
 
 .creator .jutsu-slot{margin:20px 0 28px}.creator .jutsu-detail{border:0;border-bottom:1px solid #d8e0e2;border-radius:0;background:transparent;padding:12px 0;margin:8px 0}.creator .jutsu-detail>summary{display:list-item;list-style:disclosure-closed outside;cursor:pointer;color:#365f6b;font-weight:600;padding:8px 0;margin-left:18px}.creator .jutsu-detail[open]>summary{list-style-type:disclosure-open}.creator .jutsu-detail>summary::marker{color:#365f6b}
+
+.creator .jutsu-section{margin:22px 0;padding:18px;border:1px solid #d8e0e2;border-radius:10px;background:#f8faf9}.creator .jutsu-section>div:first-child h3{margin-top:0}.creator .jutsu-section>.jutsu-slot{margin:16px 0 20px}.creator .jutsu-section>.jutsu-slot:last-child{margin-bottom:0}.creator .jutsu-section>.jutsu-slot .jutsu-detail{margin-left:2px}.creator .jutsu-section>summary{cursor:pointer;color:#365f6b;font-weight:650}
+@media(max-width:600px){.creator .jutsu-section{margin:18px 0;padding:14px}.creator .jutsu-section>.jutsu-slot{margin:14px 0 18px}.creator .jutsu-detail>summary{font-size:.95rem}}
