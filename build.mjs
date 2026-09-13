@@ -1,2 +1,11 @@
 import {build} from 'esbuild';
+import {readFile,writeFile,readdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 await build({entryPoints:['src/main.jsx'],bundle:true,minify:true,format:'iife',platform:'browser',jsx:'automatic',outfile:'docs/app.js',define:{'process.env.NODE_ENV':'"production"'},legalComments:'linked'});
+const js=await readFile('docs/app.js'),css=await readFile('docs/styles.css');
+const version=createHash('sha256').update(js).update(css).digest('hex').slice(0,12);
+await writeFile(`docs/app-${version}.js`,js);await writeFile(`docs/styles-${version}.css`,css);
+const html=`<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shinobi · Charakter erstellen</title><link rel="stylesheet" href="./styles-${version}.css"></head><body><div id="root"></div><script defer src="./app-${version}.js"></script></body></html>`;
+for(const name of await readdir('docs'))if(name.endsWith('.html'))await writeFile('docs/'+name,html);
+await writeFile('release.json',JSON.stringify({version,js:`docs/app-${version}.js`,css:`docs/styles-${version}.css`}));
+console.log('Built '+version);
